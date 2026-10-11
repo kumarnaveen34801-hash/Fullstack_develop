@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Shipped Resume Parser — style.css
+   Shipped Resume Parser — React frontend styles
    Dark navy + purple gradient theme
    ========================================================================== */
 
@@ -35,8 +35,7 @@
   padding: 0;
 }
 
-/* JS toggles the `hidden` attribute to show/hide results and messages.
-   This guarantees hiding wins even where we set `display` ourselves. */
+/* React toggles the `hidden` attribute to show/hide results and messages. */
 [hidden] {
   display: none !important;
 }
@@ -277,7 +276,7 @@ svg {
   transform: translateY(-2px);
 }
 
-/* Highlight while a file is dragged over — script.js adds/removes `.dragover` */
+/* Highlight while a file is dragged over. */
 .drop-zone.dragover {
   border-color: var(--purple-300);
   background: rgba(139, 92, 246, 0.14);
@@ -460,8 +459,7 @@ svg {
   stroke: rgba(255, 255, 255, 0.08);
 }
 
-/* HTML sets pathLength="100", so dashoffset 100 = 0% and 0 = 100%.
-   script.js only needs to set stroke-dashoffset to (100 - score). */
+/* pathLength="100" makes dashoffset 100 = 0% and 0 = 100%. */
 .ring-progress {
   stroke: var(--purple-400);
   stroke-linecap: round;
@@ -624,7 +622,7 @@ svg {
   }
 }
 
-/* Results section fades in when script.js removes the hidden attribute */
+/* Results section fades in when React removes the hidden attribute. */
 .results-section:not([hidden]) {
   animation: fadeInUp 0.5s ease both;
 }
