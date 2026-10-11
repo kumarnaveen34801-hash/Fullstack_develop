@@ -1,0 +1,705 @@
+/* ==========================================================================
+   Shipped Resume Parser — style.css
+   Dark navy + purple gradient theme
+   ========================================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --navy-900: #070b21;
+  --navy-800: #0e1535;
+  --navy-700: #141b3f;
+  --purple-600: #7c3aed;
+  --purple-500: #8b5cf6;
+  --purple-400: #a78bfa;
+  --purple-300: #c4b5fd;
+  --indigo-400: #818cf8;
+  --text-primary: #e7eaf6;
+  --text-muted: #9aa3c0;
+  --green-400: #34d399;
+  --green-300: #6ee7b7;
+  --orange-400: #fb923c;
+  --orange-300: #fdba74;
+  --red-400: #f87171;
+  --card-radius: 16px;
+  --shadow-card: 0 10px 30px rgba(3, 6, 20, 0.35);
+  --shadow-card-hover: 0 16px 40px rgba(76, 29, 149, 0.35);
+  --transition: 0.25s ease;
+}
+
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* JS toggles the `hidden` attribute to show/hide results and messages.
+   This guarantees hiding wins even where we set `display` ourselves. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 40%, #251a54 78%, #341f6b 100%);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.45);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--purple-400);
+  outline-offset: 3px;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+/* Gradient text used by the hero heading, brand accent, and big numbers */
+.hero h1,
+.brand-accent,
+.stat-number {
+  background: linear-gradient(90deg, var(--purple-300), var(--indigo-400) 55%, var(--purple-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================================
+   Navigation bar
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 11, 33, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-accent {
+  margin-left: 0.35em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+/* Animated underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--purple-500), var(--purple-400));
+  transition: width var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 96px 24px 64px;
+  text-align: center;
+  animation: fadeInUp 0.7s ease both;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 5vw + 1rem, 4rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.hero-description {
+  max-width: 640px;
+  margin: 20px auto 36px;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+}
+
+/* ==========================================================================
+   Buttons (hero CTA, browse label, analyze)
+   ========================================================================== */
+.cta-button,
+.browse-button,
+.analyze-button {
+  display: inline-block;
+  padding: 13px 30px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--purple-600), var(--purple-400));
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+
+.cta-button:hover,
+.browse-button:hover,
+.analyze-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.5);
+}
+
+.cta-button:active,
+.browse-button:active,
+.analyze-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Disabled state while an analysis is running */
+.analyze-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Shared section + heading styles
+   ========================================================================== */
+.upload-section,
+.results-section,
+.how-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.upload-section h2,
+.results-section h2,
+.how-section h2 {
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 36px;
+}
+
+/* Small gradient underline beneath each section heading */
+.upload-section h2::after,
+.results-section h2::after,
+.how-section h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--purple-500), var(--indigo-400));
+}
+
+/* ==========================================================================
+   Upload section
+   ========================================================================== */
+.upload-section {
+  text-align: center;
+}
+
+.drop-zone {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border: 2px dashed rgba(167, 139, 250, 0.4);
+  border-radius: var(--card-radius);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition),
+    box-shadow var(--transition), transform var(--transition);
+}
+
+.drop-zone:hover {
+  border-color: var(--purple-400);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Highlight while a file is dragged over — script.js adds/removes `.dragover` */
+.drop-zone.dragover {
+  border-color: var(--purple-300);
+  background: rgba(139, 92, 246, 0.14);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18), 0 14px 34px rgba(76, 29, 149, 0.35);
+  transform: scale(1.01);
+}
+
+.drop-zone-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.drop-zone-text {
+  font-size: 1.05rem;
+}
+
+.drop-zone-or {
+  color: var(--text-muted);
+  margin: 10px 0 14px;
+  font-size: 0.9rem;
+}
+
+.file-name {
+  margin-top: 16px;
+  color: var(--purple-300);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.error-message {
+  max-width: 640px;
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 10px;
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--red-400);
+  font-weight: 500;
+}
+
+/* Optional job description */
+.job-description {
+  max-width: 720px;
+  margin: 32px auto 0;
+  text-align: left;
+}
+
+.job-description label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.optional {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.85em;
+}
+
+#jobDescription {
+  width: 100%;
+  min-height: 140px;
+  padding: 14px 16px;
+  resize: vertical;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#jobDescription::placeholder {
+  color: rgba(154, 163, 192, 0.7);
+}
+
+#jobDescription:focus {
+  outline: none;
+  border-color: var(--purple-400);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+}
+
+.analyze-button {
+  display: block;
+  width: min(100%, 320px);
+  margin: 28px auto 0;
+}
+
+/* Loading indicator */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: var(--purple-300);
+  font-weight: 500;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(167, 139, 250, 0.3);
+  border-top-color: var(--purple-400);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ==========================================================================
+   Cards & results grid
+   ========================================================================== */
+.card {
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--card-radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: fadeInUp 0.6s ease both;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--purple-300);
+  margin-bottom: 18px;
+}
+
+/* Staggered entrance for result cards */
+.results-grid .card:nth-child(2) { animation-delay: 0.07s; }
+.results-grid .card:nth-child(3) { animation-delay: 0.14s; }
+.results-grid .card:nth-child(4) { animation-delay: 0.21s; }
+.results-grid .card:nth-child(5) { animation-delay: 0.28s; }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Row 2: missing skills, then suggestions spanning the remaining columns */
+.suggestions-card {
+  grid-column: 2 / -1;
+}
+
+/* --- Score card --- */
+.score-card {
+  text-align: center;
+}
+
+.score-ring {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 8px auto 4px;
+}
+
+.score-ring svg {
+  display: block;
+  transform: rotate(-90deg); /* start the arc at 12 o'clock */
+}
+
+.ring-track,
+.ring-progress {
+  fill: none;
+  stroke-width: 10;
+}
+
+.ring-track {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+/* HTML sets pathLength="100", so dashoffset 100 = 0% and 0 = 100%.
+   script.js only needs to set stroke-dashoffset to (100 - score). */
+.ring-progress {
+  stroke: var(--purple-400);
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.55));
+  transition: stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.score-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.disclaimer {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* --- Total skills stat card --- */
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* --- Skill badges --- */
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+}
+
+.badge-list li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: transform var(--transition);
+}
+
+.badge-list li:hover {
+  transform: translateY(-2px);
+}
+
+/* Green badges for skills found in the resume */
+.badge-list.found li {
+  background: rgba(52, 211, 153, 0.14);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  color: var(--green-300);
+}
+
+/* Orange badges for missing skills */
+.badge-list.missing li {
+  background: rgba(251, 146, 60, 0.14);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  color: var(--orange-300);
+}
+
+.empty-message {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- Suggestions card --- */
+.suggestions-list {
+  list-style: none;
+}
+
+.suggestions-list li {
+  position: relative;
+  padding: 10px 0 10px 26px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.suggestions-list li:last-child {
+  border-bottom: none;
+}
+
+.suggestions-list li::before {
+  content: "\2192"; /* → */
+  position: absolute;
+  left: 0;
+  color: var(--purple-400);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   How it works
+   ========================================================================== */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.step-card p {
+  color: var(--text-muted);
+}
+
+.step-card h3 {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  margin-top: 64px;
+  padding: 32px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.noscript-warning {
+  margin: 24px;
+  padding: 16px;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--red-400);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Results section fades in when script.js removes the hidden attribute */
+.results-section:not([hidden]) {
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 900px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .suggestions-card {
+    grid-column: 1 / -1;
+  }
+
+  .hero {
+    padding: 72px 20px 48px;
+  }
+}
+
+@media (max-width: 800px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .upload-section,
+  .results-section,
+  .how-section {
+    padding: 36px 16px;
+  }
+
+  .drop-zone {
+    padding: 36px 16px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analyze-button {
+    width: 100%;
+  }
+
+  .score-ring,
+  .score-ring svg {
+    width: 140px;
+    height: 140px;
+  }
+
+  .stat-number {
+    font-size: 2.8rem;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
